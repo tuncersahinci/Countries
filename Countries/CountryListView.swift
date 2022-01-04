@@ -19,7 +19,7 @@ struct CountryListView: View {
                         Text(country.name)
                         Spacer()
                         Button {
-                           
+                           //
                         } label: {
                             Image(systemName: "star")
                         }
