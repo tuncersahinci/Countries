@@ -49,8 +49,8 @@ class CountryService: ObservableObject {
 
     func fethcCountries() {
         let headers = [
-            "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
-            "x-rapidapi-key": "0ca672deafmshe578bc0c7bffe3dp1f4b69jsn8d950823a097"
+            "x-rapidapi-host": Constants.host,
+            "x-rapidapi-key": Constants.apiKey
         ]
 
         let request = NSMutableURLRequest(url: NSURL(string: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10")! as URL,
@@ -78,8 +78,8 @@ class CountryService: ObservableObject {
     
     func fetchCountryDetails(countryCode: String) {
         let headers = [
-            "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
-            "x-rapidapi-key": "0ca672deafmshe578bc0c7bffe3dp1f4b69jsn8d950823a097"
+            "x-rapidapi-host": Constants.host,
+            "x-rapidapi-key": Constants.apiKey
         ]
 
         let request = NSMutableURLRequest(url: NSURL(string: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries/\(countryCode)")! as URL,
