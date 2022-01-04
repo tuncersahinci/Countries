@@ -8,17 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		F1AA47BD2784A3110028CB21 /* CountriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47BC2784A3110028CB21 /* CountriesApp.swift */; };
-		F1AA47BF2784A3110028CB21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47BE2784A3110028CB21 /* ContentView.swift */; };
+		F1AA47BF2784A3110028CB21 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47BE2784A3110028CB21 /* MainView.swift */; };
 		F1AA47C12784A3110028CB21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA47C02784A3110028CB21 /* Assets.xcassets */; };
 		F1AA47C42784A3110028CB21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA47C32784A3110028CB21 /* Preview Assets.xcassets */; };
+		F1AA47CC2784A32A0028CB21 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F1AA47CB2784A32A0028CB21 /* SDWebImageSwiftUI */; };
+		F1AA47CE2784A33E0028CB21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47CD2784A33E0028CB21 /* NetworkManager.swift */; };
+		F1AA47D02784A3B90028CB21 /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47CF2784A3B90028CB21 /* CountryListView.swift */; };
+		F1AA47D22784A3CB0028CB21 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47D12784A3CB0028CB21 /* FavoritesView.swift */; };
+		F1AA47D62784CF550028CB21 /* NetworkingProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47D52784CF550028CB21 /* NetworkingProperties.swift */; };
+		F1AA47DB2784E5430028CB21 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47DA2784E5420028CB21 /* Helpers.swift */; };
+		F1AA47DD2784F0C80028CB21 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA47DC2784F0C80028CB21 /* DetailView.swift */; };
+		F1AA47E32784F48D0028CB21 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = F1AA47E22784F48D0028CB21 /* SDWebImageSVGCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F1AA47B92784A3110028CB21 /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AA47BC2784A3110028CB21 /* CountriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesApp.swift; sourceTree = "<group>"; };
-		F1AA47BE2784A3110028CB21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F1AA47BE2784A3110028CB21 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F1AA47C02784A3110028CB21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1AA47C32784A3110028CB21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F1AA47CD2784A33E0028CB21 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F1AA47CF2784A3B90028CB21 /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
+		F1AA47D12784A3CB0028CB21 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		F1AA47D52784CF550028CB21 /* NetworkingProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProperties.swift; sourceTree = "<group>"; };
+		F1AA47DA2784E5420028CB21 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		F1AA47DC2784F0C80028CB21 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1AA47CC2784A32A0028CB21 /* SDWebImageSwiftUI in Frameworks */,
+				F1AA47E32784F48D0028CB21 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +67,14 @@
 		F1AA47BB2784A3110028CB21 /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				F1AA47BE2784A3110028CB21 /* MainView.swift */,
+				F1AA47CD2784A33E0028CB21 /* NetworkManager.swift */,
+				F1AA47CF2784A3B90028CB21 /* CountryListView.swift */,
+				F1AA47DC2784F0C80028CB21 /* DetailView.swift */,
+				F1AA47D12784A3CB0028CB21 /* FavoritesView.swift */,
 				F1AA47BC2784A3110028CB21 /* CountriesApp.swift */,
-				F1AA47BE2784A3110028CB21 /* ContentView.swift */,
+				F1AA47DA2784E5420028CB21 /* Helpers.swift */,
+				F1AA47D52784CF550028CB21 /* NetworkingProperties.swift */,
 				F1AA47C02784A3110028CB21 /* Assets.xcassets */,
 				F1AA47C22784A3110028CB21 /* Preview Content */,
 			);
@@ -83,6 +105,10 @@
 			dependencies = (
 			);
 			name = Countries;
+			packageProductDependencies = (
+				F1AA47CB2784A32A0028CB21 /* SDWebImageSwiftUI */,
+				F1AA47E22784F48D0028CB21 /* SDWebImageSVGCoder */,
+			);
 			productName = Countries;
 			productReference = F1AA47B92784A3110028CB21 /* Countries.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +137,10 @@
 				Base,
 			);
 			mainGroup = F1AA47B02784A3110028CB21;
+			packageReferences = (
+				F1AA47CA2784A32A0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				F1AA47E12784F48D0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
+			);
 			productRefGroup = F1AA47BA2784A3110028CB21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +167,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1AA47BF2784A3110028CB21 /* ContentView.swift in Sources */,
+				F1AA47D22784A3CB0028CB21 /* FavoritesView.swift in Sources */,
+				F1AA47DD2784F0C80028CB21 /* DetailView.swift in Sources */,
+				F1AA47D62784CF550028CB21 /* NetworkingProperties.swift in Sources */,
+				F1AA47DB2784E5430028CB21 /* Helpers.swift in Sources */,
+				F1AA47CE2784A33E0028CB21 /* NetworkManager.swift in Sources */,
+				F1AA47BF2784A3110028CB21 /* MainView.swift in Sources */,
 				F1AA47BD2784A3110028CB21 /* CountriesApp.swift in Sources */,
+				F1AA47D02784A3B90028CB21 /* CountryListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +377,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1AA47CA2784A32A0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		F1AA47E12784F48D0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1AA47CB2784A32A0028CB21 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1AA47CA2784A32A0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		F1AA47E22784F48D0028CB21 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1AA47E12784F48D0028CB21 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1AA47B12784A3110028CB21 /* Project object */;
 }
