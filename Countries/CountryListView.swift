@@ -9,28 +9,38 @@ import SwiftUI
 
 struct CountryListView: View {
     @ObservedObject var networkingManager = CountryService()
-
+    @ObservedObject var favorites = Favorites()
+    
+    @State var countries: Countries?
+    
     var body: some View {
         NavigationView {
-            List(networkingManager.countryResults) { country in
-                NavigationLink(destination: DetailView(countryCode: country.code))
+            if let unWrappedData = countries?.data {
+                List(unWrappedData) { country in
+                    NavigationLink(destination: DetailView(countryCode: country.code))
                     {
                     HStack {
                         Text(country.name)
                         Spacer()
                         Button {
-                           //
-                        } label: {
-                            Image(systemName: "star")
+                            if favorites.contains(country.code) {
+                                favorites.remove(country.code)
+                                } else {
+                                    favorites.add(country.code)
+                                }
+                            } label: {
+                                Image(systemName: favorites.contains(country.code) ? "star.fill" : "star")
+                            }.buttonStyle(PlainButtonStyle())
                         }
                     }
-
                 }
-            }.navigationBarTitle("Countries")
-        }
+            }
+        }.navigationBarTitle("Countries")
         .onAppear{
-            networkingManager.fethcCountries()
-        }
+            CountryService().fetchCountries { (countries ) in
+                self.countries = countries
+            }
+        }.environmentObject(favorites)
     }
 }
 

@@ -17,7 +17,7 @@ struct MainView: View {
             FavoritesView()
                  .tabItem{
                      Label("Saved", systemImage: "heart.fill")
-                 }
+                }
         }
     }
 }

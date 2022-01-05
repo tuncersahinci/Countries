@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-// MARK: - Countries
 struct Countries: Codable {
     let data: [CountryResult]
 }
 
-// MARK: - CountryResult
 struct CountryResult: Codable, Identifiable {
     let code: String
     let name: String
@@ -27,7 +25,6 @@ struct CountryDetail: Codable {
     let data: CountryDetails
     
 }
-// MARK: - CountryDetails
 struct CountryDetails: Codable {
     let name: String
     let code: String
@@ -35,19 +32,20 @@ struct CountryDetails: Codable {
     let wikiDataID: String
 
     enum CodingKeys: String, CodingKey {
-        case name, code
-        case flagImageURI = "flagImageUri"
         case wikiDataID = "wikiDataId"
+        case flagImageURI = "flagImageUri"
+        case name, code
     }
 }
 
 
 class CountryService: ObservableObject {
     
-    @Published var countryResults = [CountryResult]()
-    @Published var countryDetail: CountryDetails?
+    @Published var countryResults: Countries?
+    @Published var countryDetail: CountryDetail?
+    
 
-    func fethcCountries() {
+    func fetchCountries(completion:@escaping (Countries) -> ()) {
         let headers = [
             "x-rapidapi-host": Constants.host,
             "x-rapidapi-key": Constants.apiKey
@@ -63,8 +61,8 @@ class CountryService: ObservableObject {
             do {
                 if let data = data {
                     let result = try JSONDecoder().decode(Countries.self, from: data)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.countryResults = result.data
+                    DispatchQueue.main.async {
+                        completion(result)
                     }
                 } else {
                     print("No data")
@@ -76,12 +74,12 @@ class CountryService: ObservableObject {
         }).resume()
     }
     
-    func fetchCountryDetails(countryCode: String) {
+  func fetchCountryDetails(countryCode: String, completion:@escaping (CountryDetail) -> ()) {
         let headers = [
             "x-rapidapi-host": Constants.host,
             "x-rapidapi-key": Constants.apiKey
         ]
-
+        
         let request = NSMutableURLRequest(url: NSURL(string: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries/\(countryCode)")! as URL,
         cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -93,7 +91,7 @@ class CountryService: ObservableObject {
                 if let data = data {
                     let result = try JSONDecoder().decode(CountryDetail.self, from: data)
                     DispatchQueue.main.async {
-                        self.countryDetail = result.data
+                        completion(result)
                     }
                 } else {
                     print("No data")
