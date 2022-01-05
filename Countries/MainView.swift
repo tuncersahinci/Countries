@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-    var body: some View {
-        TabView {
-            CountryListView()
-                .tabItem{
-                    Label("Home", systemImage: "house.fill")
-                }
-            FavoritesView()
-                 .tabItem{
-                     Label("Saved", systemImage: "heart.fill")
-                }
+  var body: some View {
+    TabView {
+      CountryListView()
+        .tabItem{
+          Label("Home", systemImage: "house.fill")
+        }
+      FavoritesView()
+        .tabItem{
+          Label("Saved", systemImage: "heart.fill")
         }
     }
+  }
 }
 
 struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
+  static var previews: some View {
+    MainView()
+  }
 }
