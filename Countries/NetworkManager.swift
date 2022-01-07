@@ -38,12 +38,7 @@ struct CountryDetails: Codable {
   }
 }
 
-
 class CountryService: ObservableObject {
-  
-  @Published var countryResults: Countries?
-  @Published var countryDetail: CountryDetail?
-  
   
   func fetchCountries(completion:@escaping (Countries) -> ()) {
     let headers = [
@@ -61,7 +56,7 @@ class CountryService: ObservableObject {
       do {
         if let data = data {
           let result = try JSONDecoder().decode(Countries.self, from: data)
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+          DispatchQueue.main.async {
             completion(result)
           }
         } else {

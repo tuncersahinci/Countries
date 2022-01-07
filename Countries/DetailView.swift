@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import MapKit
 
 struct DetailView: View {
   @ObservedObject var networkingManager = CountryService()

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CountryListView: View {
-  @ObservedObject var networkingManager = CountryService()
-  @ObservedObject var favorites = Favorites()
   
-  @State var countries: Countries?
+  @ObservedObject var networkingManager = CountryService()
+  @EnvironmentObject var favorites: Favorites
+  @Binding var countries: Countries?
   
   var body: some View {
     VStack{
       if countries?.data == nil {
-         ProgressView()
+        ProgressView()
       } else {
         NavigationView {
           if let unWrappedData = countries?.data {
@@ -36,23 +36,11 @@ struct CountryListView: View {
                   }.buttonStyle(PlainButtonStyle())
                 }
               }
-            }.navigationBarTitle("Countries")
+            }.listStyle(PlainListStyle())
+              .navigationBarTitle("Countries")
           }
         }
-
       }
     }
-   
-      .onAppear{
-        CountryService().fetchCountries { (countries ) in
-          self.countries = countries
-        }
-      }.environmentObject(favorites)
-  }
-}
-
-struct CountryListView_Previews: PreviewProvider {
-  static var previews: some View {
-    CountryListView()
   }
 }

@@ -8,14 +8,39 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  
+  @ObservedObject var networkingManager = CountryService()
+  @EnvironmentObject var favorites: Favorites
+  @Binding var countries: Countries?
+  
+  var body: some View {
+    VStack{
+      if countries?.data == nil {
+        ProgressView()
+      } else {
+        NavigationView {
+          if let unWrappedData = countries?.data {
+            List(unWrappedData.filter({favorites.contains($0.code)})) { country in
+              NavigationLink(destination: DetailView(countryCode: country.code)) {
+                HStack {
+                  Text(country.name)
+                  Spacer()
+                  Button {
+                    if favorites.contains(country.code) {
+                      favorites.remove(country.code)
+                    } else {
+                      favorites.add(country.code)
+                    }
+                  } label: {
+                    Image(systemName: favorites.contains(country.code) ? "star.fill" : "star")
+                  }.buttonStyle(PlainButtonStyle())
+                }
+              }
+            }.listStyle(PlainListStyle())
+              .navigationBarTitle("Countries")
+          }
+        }
+      }
     }
-}
-
-struct FavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView()
-    }
+  }
 }
