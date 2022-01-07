@@ -25,11 +25,7 @@ struct CountryListView: View {
                   Text(country.name)
                   Spacer()
                   Button {
-                    if favorites.contains(country.code) {
-                      favorites.remove(country.code)
-                    } else {
-                      favorites.add(country.code)
-                    }
+                    favorites.toggle(country.code)
                   } label: {
                     Image(systemName: favorites.contains(country.code) ? "star.fill" : "star")
                   }.buttonStyle(PlainButtonStyle())

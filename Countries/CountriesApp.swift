@@ -20,6 +20,7 @@ struct CountriesApp: App {
     }
   }
 }
+
 // Initialize SVGCoder
 private extension CountriesApp {
   func setUpDependencies() {

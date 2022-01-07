@@ -8,36 +8,35 @@
 import SwiftUI
 
 class Favorites: ObservableObject {
-  private var countries: Set<String>
+  var countryCodes: Set<String>
   
   private let saveKey = "Favorites"
   
   init() {
-    self.countries = []
-    
+    self.countryCodes = []
     self.load()
   }
   
   func contains(_ countryCode: String) -> Bool {
-    countries.contains(countryCode)
+    countryCodes.contains(countryCode)
   }
   
   func add(_ countryCode: String) {
     objectWillChange.send()
-    countries.insert(countryCode)
+    countryCodes.insert(countryCode)
     save()
   }
   
   func remove(_ countryCode: String) {
     objectWillChange.send()
-    countries.remove(countryCode)
+    countryCodes.remove(countryCode)
     save()
   }
 
   func save() {
     do {
       let fileName = getDocumentsDirectory().appendingPathComponent("SavedCountries")
-      let countryIds = Array(self.countries)
+      let countryIds = Array(self.countryCodes)
       let data = try JSONEncoder().encode(countryIds)
       try data.write(to: fileName, options: [.atomicWrite, .completeFileProtection])
       print("Country data saved")
@@ -56,9 +55,17 @@ class Favorites: ObservableObject {
     do {
       let data = try Data(contentsOf: fileName)
       let countryIds = try JSONDecoder().decode([String].self, from: data)
-      countries = Set(countryIds)
+      countryCodes = Set(countryIds)
     } catch {
       print("Unable to load saved data.")
+    }
+  }
+  
+  func toggle(_ countryCode: String) {
+    if self.contains(countryCode) {
+      self.remove(countryCode)
+    } else {
+      self.add(countryCode)
     }
   }
 }

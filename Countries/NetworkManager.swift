@@ -11,7 +11,7 @@ struct Countries: Codable {
   let data: [CountryResult]
 }
 
-struct CountryResult: Codable, Identifiable {
+struct CountryResult: Codable, Identifiable, Hashable {
   let code: String
   let name: String
   var id: String { code }
@@ -46,7 +46,7 @@ class CountryService: ObservableObject {
       "x-rapidapi-key": Constants.apiKey
     ]
     
-    let request = NSMutableURLRequest(url: NSURL(string: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10")! as URL,
+    let request = NSMutableURLRequest(url: NSURL(string: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10&offset=10")! as URL,
                                       cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
     
     request.httpMethod = "GET"

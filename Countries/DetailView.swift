@@ -14,6 +14,8 @@ struct DetailView: View {
   
   @State var countryDetails: CountryDetail?
   
+  var shouldUpdateFavorites: Binding<Bool>?
+  
   let countryCode: String
   
   var body: some View {
@@ -24,10 +26,11 @@ struct DetailView: View {
         ScrollView{
           if let unwrappedDetail = countryDetails?.data {
             VStack(spacing: 50) {
-              WebImage(url: URL(string: unwrappedDetail.flagImageURI))
-                .resizable()
-                .scaledToFit()
-                .modifier(RoundedEdge(width: 1, color: .black, cornerRadius: 0))
+                WebImage(url: URL(string: unwrappedDetail.flagImageURI))
+                  .resizable()
+                  .scaledToFit()
+                  .modifier(RoundedEdge(width: 1, color: .black, cornerRadius: 0))
+                  
               HStack {
                 Text("Country Code:")
                   .fontWeight(.heavy)
@@ -44,16 +47,14 @@ struct DetailView: View {
       CountryService().fetchCountryDetails( countryCode: countryCode) { (countryDetails) in
         self.countryDetails = countryDetails
       }
+    }.onDisappear{
+      self.shouldUpdateFavorites?.wrappedValue = true
     }
     .navigationTitle(countryDetails?.data.name ?? "")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       Button{
-        if favorites.contains(countryCode) {
-          favorites.remove(countryCode)
-        } else {
-          favorites.add(countryCode)
-        }
+        favorites.toggle(countryCode)
       } label: {
         Image(systemName: favorites.contains(countryCode) ? "star.fill" : "star")
       }
@@ -61,8 +62,3 @@ struct DetailView: View {
   }
 }
 
-struct DetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    DetailView(countryCode: "US")
-  }
-}
