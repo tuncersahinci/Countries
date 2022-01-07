@@ -12,7 +12,6 @@ struct MainView: View {
   @ObservedObject var favorites = Favorites()
   
   var body: some View {
-    
     TabView {
       CountryListView(countries: $countries)
         .tabItem{
@@ -33,5 +32,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView()
+      .preferredColorScheme(.dark)
   }
 }

@@ -56,7 +56,7 @@ class CountryService: ObservableObject {
       do {
         if let data = data {
           let result = try JSONDecoder().decode(Countries.self, from: data)
-          DispatchQueue.main.async {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             completion(result)
           }
         } else {

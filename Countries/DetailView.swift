@@ -27,6 +27,7 @@ struct DetailView: View {
               WebImage(url: URL(string: unwrappedDetail.flagImageURI))
                 .resizable()
                 .scaledToFit()
+                .modifier(RoundedEdge(width: 1, color: .black, cornerRadius: 0))
               HStack {
                 Text("Country Code:")
                   .fontWeight(.heavy)
@@ -42,7 +43,6 @@ struct DetailView: View {
     .onAppear{
       CountryService().fetchCountryDetails( countryCode: countryCode) { (countryDetails) in
         self.countryDetails = countryDetails
-        
       }
     }
     .navigationTitle(countryDetails?.data.name ?? "")

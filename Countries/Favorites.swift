@@ -33,7 +33,7 @@ class Favorites: ObservableObject {
     countries.remove(countryCode)
     save()
   }
-  
+
   func save() {
     do {
       let fileName = getDocumentsDirectory().appendingPathComponent("SavedCountries")

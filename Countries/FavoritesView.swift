@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FavoritesView: View {
   
-  @ObservedObject var networkingManager = CountryService()
   @EnvironmentObject var favorites: Favorites
   @Binding var countries: Countries?
   

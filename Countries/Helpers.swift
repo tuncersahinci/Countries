@@ -25,6 +25,20 @@ struct Constants {
     static let apiKey = "0ca672deafmshe578bc0c7bffe3dp1f4b69jsn8d950823a097"
 }
 
+struct RoundedEdge: ViewModifier {
+    let width: CGFloat
+    let color: Color
+    let cornerRadius: CGFloat
+
+    func body(content: Content) -> some View {
+        content.cornerRadius(cornerRadius - width)
+            .padding(width)
+            .background(color)
+            .cornerRadius(cornerRadius)
+    }
+}
+
+
 
 
 

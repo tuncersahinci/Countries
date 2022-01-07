@@ -67,8 +67,8 @@
 		F1AA47BB2784A3110028CB21 /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				F1AA47BE2784A3110028CB21 /* MainView.swift */,
 				F1AA47CD2784A33E0028CB21 /* NetworkManager.swift */,
+				F1AA47BE2784A3110028CB21 /* MainView.swift */,
 				F1AA47CF2784A3B90028CB21 /* CountryListView.swift */,
 				F1AA47EA2785BDEB0028CB21 /* FavoritesView.swift */,
 				F1AA47DC2784F0C80028CB21 /* DetailView.swift */,
