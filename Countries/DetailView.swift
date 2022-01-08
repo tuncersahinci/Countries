@@ -9,13 +9,11 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct DetailView: View {
+  
   @ObservedObject var networkingManager = CountryService()
   @EnvironmentObject var favorites: Favorites
-  
   @State var countryDetails: CountryDetail?
-  
   var shouldUpdateFavorites: Binding<Bool>?
-  
   let countryCode: String
   
   var body: some View {
@@ -26,11 +24,10 @@ struct DetailView: View {
         ScrollView{
           if let unwrappedDetail = countryDetails?.data {
             VStack(spacing: 50) {
-                WebImage(url: URL(string: unwrappedDetail.flagImageURI))
-                  .resizable()
-                  .scaledToFit()
-                  .modifier(RoundedEdge(width: 1, color: .black, cornerRadius: 0))
-                  
+              WebImage(url: URL(string: unwrappedDetail.flagImageURI))
+                .resizable()
+                .scaledToFit()
+                .modifier(RoundedEdge(width: 1, color: .black, cornerRadius: 0))
               HStack {
                 Text("Country Code:")
                   .fontWeight(.heavy)

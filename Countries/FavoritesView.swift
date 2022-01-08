@@ -11,7 +11,6 @@ struct FavoritesView: View {
   
   @EnvironmentObject var favorites: Favorites
   @Binding var countries: Countries?
-  
   @State var localFavorites = Set<String>()
   @State var shouldUpdateFavorites: Bool = false
   
@@ -35,8 +34,9 @@ struct FavoritesView: View {
                   }.buttonStyle(PlainButtonStyle())
                 }
               }
-            }.listStyle(PlainListStyle())
-              .navigationBarTitle("Countries")
+            }
+            .listStyle(PlainListStyle())
+            .navigationBarTitle("Countries")
           }
         }.onAppear{
           self.localFavorites = favorites.countryCodes
